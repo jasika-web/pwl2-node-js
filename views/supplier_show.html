@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Supplier</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1>Detail Supplier</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"><%= supplier.supplier_name %></h5>
+            <p>PIC: <%= supplier.pic_supplier %></p>
+
+            <a href="/suppliers" class="btn btn-primary">Kembali</a>
+            <a href="/suppliers/<%= supplier.id %>/edit" class="btn btn-warning">Edit</a>
+
+            <form action="/suppliers/<%= supplier.id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button class="btn btn-danger">Hapus</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
