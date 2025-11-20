@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Produk</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Daftar Produk</h1>
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Gambar</th>
+                    <th>Nama Produk</th>
+                    <th>Supplier</th>
+                    <th>Category</th>
+                    <th>Harga</th>
+                    <th>Stok</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(product => { %>
+                    <tr>
+                        <td><%= product.id %></td>
+                        <td>
+                        <% if (product.image) { %>
+                            <img src="http://127.0.0.1:8000/storage/images/<%= product.image %>" 
+                                class="rounded shadow-sm" style="width: 100px;">
+                        <% } else { %>
+                            <span class="text-muted">Tidak ada gambar</span>
+                        <% } %>
+                        </td>
+                        <td><%= product.nama_produk || product.title %></td>
+                        <td><%= (product.supplier) ? product.supplier.supplier_name : '-' %></td>
+                        <td><%= (product.category) ? product.category.product_category_name : '-' %></td>
+                        <td><%= product.harga || product.price %></td>
+                        <td><%= product.stok || product.stock %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <div class="text-center mt-3">
+            <a href="/" class="btn btn-secondary">Kembali ke Halaman Utama</a>
+        </div>
+    </div>
+</body>
+</html>
